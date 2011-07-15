@@ -12,17 +12,24 @@ class home extends CI_Controller {
 		$this->group = new Group_model();
 
 		$data['group_names'] = $this->group->get_names();
+		
+		$data['settings'] = array(
+			'project_name' 			=> "Open311",
+			'company_name' 			=> "San Francisco",
+			'project_description' 	=> "Report a problem in your neighborhood",
+		);
 				
-		$this->load->view('header');
+		$this->load->view('header', $data);
 		$this->load->view('web/home', $data);
 		$this->load->view('footer');
 	}
 	
 	public function submit()
 	{
+
 		$this->load->model('service_model');
 		$service = new Service_model();
-		echo $service->submit($this->input->post());
+		$service->submit($this->input->post(), $_FILES);
 		$this->load->view('header');
 		$this->load->view('web/success');
 		$this->load->view('footer');
@@ -40,7 +47,7 @@ class home extends CI_Controller {
 		$services = $this->group->get($group);
 		if(sizeof($services) == 1): ?>
 			<input type="hidden" value="<?=$services[0]?>" />
-			<p id="<?=$services[0]->service_code?>_description" class="description"><strong>Description: </strong><?=$services[0]->description?></p>
+			<p id="<?=$services[0]->service_code?>_description" class="description"><?=$services[0]->description?></p>
 		<? else:
 			?>
 			<label for="service_code">Service</label>
@@ -51,7 +58,7 @@ class home extends CI_Controller {
 			<? endforeach; ?>
 			</select>
 			<? foreach($services as $service): ?>
-				<p id="<?=$service->service_code?>_description" class="hidden description"><strong>Description: </strong><?=$service->description?></p>
+				<p id="<?=$service->service_code?>_description" class="invisible description"><?=$service->description?></p>
 			<? endforeach;
 		endif;
 	}
