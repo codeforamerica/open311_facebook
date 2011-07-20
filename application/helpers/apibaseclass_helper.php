@@ -18,7 +18,6 @@ class APIBaseClass {
 	}
 	
 	public function _request($path, $method, $data=false, $headers=false) {
-		error_log(print_r($data, true));
 		# URL encode any available data
         if ($data) $query = http_build_query($data);
 		
@@ -33,6 +32,7 @@ class APIBaseClass {
 		}
 		
 		$url = $this->_root . $path;
+		error_log("Request: " . $url);
 		curl_setopt($this->_http, CURLOPT_URL, $url);
 		if($headers) curl_setopt($this->_http, CURLOPT_HTTPHEADER, $headers);
 

@@ -1,3 +1,4 @@
+		</div><!-- main -->
 	</div><!-- content -->
 </div><!-- wrapper -->
 <footer>

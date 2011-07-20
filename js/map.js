@@ -3,9 +3,9 @@
 var geocoder;
 var map;
 var marker;
-var lat = '37.76786493289861';
-var long = '-122.4436567104492';
-var city = 'San Francisco, CA';
+var lat = CITY_LAT;
+var long = CITY_LONG;
+var city = CITY_NAME . ', ' . STATE_ABBR;
 
 
 var infowindow = new google.maps.InfoWindow(

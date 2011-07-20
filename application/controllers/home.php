@@ -11,17 +11,17 @@ class home extends CI_Controller {
 		$this->load->model('group_model');
 		$this->group = new Group_model();
 
-		$data['group_names'] = $this->group->get_names();
-		
-		$data['settings'] = array(
-			'project_name' 			=> "Open311",
-			'company_name' 			=> "San Francisco",
-			'project_description' 	=> "Report a problem in your neighborhood",
-		);
+		if($data['group_names'] = $this->group->get_names()):
 				
 		$this->load->view('header', $data);
 		$this->load->view('web/home', $data);
 		$this->load->view('footer');
+		
+		else:
+			$this->load->view('header', $data);
+			$this->load->view('web/error', $data);
+			$this->load->view('footer');	
+		endif;
 	}
 	
 	public function submit()

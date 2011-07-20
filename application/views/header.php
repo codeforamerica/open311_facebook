@@ -10,11 +10,13 @@
 <script src="<?=site_url('js/script.js')?>" type="text/javascript"></script>
 <script src="<?=site_url('js/map.js')?>" type="text/javascript"></script>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<title>Open311</title>
+<title><?=PROJECT_NAME?></title>
 </head>
 <body onload="initialize()">
 <div id="content">
 <header class="clearfix">
-	<h1 id="project_name"><?=$settings['project_name']?></h1>
-	<h2 id="company_name"><?=$settings['company_name']?></h2>
+	<h1 id="project_name"><?=PROJECT_NAME?></h1>
+	<h2 id="city_name"><?=CITY_NAME?></h2>
 </header>
+<div id="main">
+

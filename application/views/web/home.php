@@ -1,4 +1,4 @@
-<h3 id="project_description"><?=$settings['project_description']?></h3>
+<h3 id="project_description"><?=PROJECT_DESCRIPTION?></h3>
 
 
 <?=form_open_multipart('home/submit')?>
