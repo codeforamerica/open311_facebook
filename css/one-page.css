@@ -44,6 +44,10 @@ body {
 	padding-bottom: 2ex;
 }
 
+#main{
+	padding:10px;
+}
+
 
 /* ----------------- Elements ----------------- */
 header{
@@ -102,7 +106,7 @@ h1#project_name{
 	margin: 0;
 	font-size: 120%;
 }
-h2#company_name{
+h2#city_name{
 	float:right;
 	font-size:90%;
 	margin: .3em 0 0 0;

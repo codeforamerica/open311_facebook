@@ -10,7 +10,13 @@ class Group_model extends CI_Model {
         $this->groups = array();
         
         $open311 = new open311Api();
-        $services = new SimpleXMLElement($open311->get_service_list());	
+
+        try{
+        	$services = new SimpleXMLElement($open311->get_service_list());	
+        }catch(Exception $e){
+        	return false;
+        	error_log($e);
+        }
         
         // create groups array
         // Open311 API lacking groups method!
