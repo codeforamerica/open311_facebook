@@ -17,21 +17,37 @@ class APIBaseClass {
 		}
 	}
 	
-	public function _request($path, $method, $data=false, $headers=false) {
+	
+	public function _request($path, $method, $data=false, $headers=false, $age=0) {
 		# URL encode any available data
         if ($data) $query = http_build_query($data);
 		
 		// these statements could be combined.. but not ready to take the leap
 		if(in_array(strtolower($method), array('get','delete'))) {
+			$caching = true;
 			# Add urlencoded data to the path as a query if method is GET or DELETE
 /* 			if($data) $path = $path.'?'.$query; -- Commented this out for Open311 bc it wasn't working - SR */
 		}else {
 			# If method is POST or PUT, put the query data into the body
 			$body = ($data) ? $query : '';
 			curl_setopt($this->_http, CURLOPT_POSTFIELDS, $body);
+			$caching = false;
 		}
 		
 		$url = $this->_root . $path;
+		
+	    $cacheDir = "application/cache/";
+	    $filename = $cacheDir.md5($url);
+		
+		if(file_exists($filename) && $caching){
+			error_log(filemtime($filename) .' > '. (time()-$age ));
+			if(filemtime($filename) > (time()-$age)){
+				error_log("Cache: " . $url);
+				return file_get_contents($filename);			
+			}
+			else error_log("Cache out of date. ");
+		}
+
 		error_log("Request: " . $url);
 		curl_setopt($this->_http, CURLOPT_URL, $url);
 		if($headers) curl_setopt($this->_http, CURLOPT_HTTPHEADER, $headers);
@@ -40,11 +56,16 @@ class APIBaseClass {
 
 		$result = curl_exec($this->_http);
 	
-		if($result === false) {	
-			echo 'Curl error: ' . curl_error($this->_http) . "\n";
-		} 
+		if($result == false) {	
+			error_log('Curl error: ' . curl_error($this->_http) . "\n");
+			if($caching) return file_get_contents($filename); // get most recent cache
+		}else{
+			error_log("Caching to " . $filename);
+			if($caching) file_put_contents($filename, $result);
+		}
 		//curl_close($this->_http);
 
+		
 		return $result;
 		
 	}

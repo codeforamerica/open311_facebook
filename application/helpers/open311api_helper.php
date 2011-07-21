@@ -2,22 +2,9 @@
 
 class open311Api extends APIBaseClass{
 	// Your API key for methods that POST
-	public static $api_key = '1O311AHX73NW26P';
-	
-	// this is sf gov API
-	public static $api_url = 'https://open311.sfgov.org/dev/v2';
-	// if this is not set you must enter in jurisdiction ID's for all methods
-	public static $jurisdiction_id = 'sfgov.org';
-	
-	// this is boston API
-	
-	//public static $api_url = 'https://mayors24.cityofboston.gov:6443/api/open311/v2';
-	//public static $jurisdiction_id = 'cityofboston.gov';
-	
-	// this is dc API (404 not found) NOT WORKING
-	
-	//public static $api_url = 'http://311.dc.gov/cwi/Open311/v2';
-	//public static $jurisdiction_id = 'dc.gov';
+	public static $api_key = OPEN_311_API_KEY;
+	public static $api_url = OPEN_311_URL;
+	public static $jurisdiction_id = OPEN_311_JURISDICTION_ID;
 
 	public static $xml_header = 'Content-Type: text/xml; charset=utf-8';
 	
