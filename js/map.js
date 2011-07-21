@@ -5,8 +5,7 @@ var map;
 var marker;
 var lat = CITY_LAT;
 var long = CITY_LONG;
-var city = CITY_NAME . ', ' . STATE_ABBR;
-
+var city = CITY_NAME + ', ' + STATE_ABBR;
 
 var infowindow = new google.maps.InfoWindow(
   { 

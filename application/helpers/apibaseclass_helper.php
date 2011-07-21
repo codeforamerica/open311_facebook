@@ -18,7 +18,7 @@ class APIBaseClass {
 	}
 	
 	
-	public function _request($path, $method, $data=false, $headers=false, $age=0) {
+	public function _request($path, $method, $data=false, $headers=false, $age=86400) {
 		# URL encode any available data
         if ($data) $query = http_build_query($data);
 		
@@ -50,7 +50,7 @@ class APIBaseClass {
 
 		error_log("Request: " . $url);
 		curl_setopt($this->_http, CURLOPT_URL, $url);
-		if($headers) curl_setopt($this->_http, CURLOPT_HTTPHEADER, $headers);
+/* 		if($headers) curl_setopt($this->_http, CURLOPT_HTTPHEADER, $headers); */
 
 		curl_setopt($this->_http, CURLOPT_CUSTOMREQUEST, $method);
 

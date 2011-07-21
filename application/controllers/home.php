@@ -29,10 +29,15 @@ class home extends CI_Controller {
 
 		$this->load->model('service_model');
 		$service = new Service_model();
-		$service->submit($this->input->post(), $_FILES);
-		$this->load->view('header');
-		$this->load->view('web/success');
-		$this->load->view('footer');
+		if($data['response'] = $service->submit($this->input->post(), $_FILES)){
+			$this->load->view('header');
+			$this->load->view('web/success', $data);
+			$this->load->view('footer');
+		}else{
+			$this->load->view('header');
+			$this->load->view('web/error', $data);
+			$this->load->view('footer');
+		}
 		
 	}
 

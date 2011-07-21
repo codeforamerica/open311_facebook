@@ -7,6 +7,13 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript">
+/* PHP-JS constants hack */
+var CITY_LAT = "<?=CITY_LAT?>";
+var CITY_LONG = "<?=CITY_LONG?>";
+var CITY_NAME = "<?=CITY_NAME?>";
+var STATE_ABBR = "<?=STATE_ABBR?>";
+</script>
 <script src="<?=site_url('js/script.js')?>" type="text/javascript"></script>
 <script src="<?=site_url('js/map.js')?>" type="text/javascript"></script>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
