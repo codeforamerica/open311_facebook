@@ -9,7 +9,7 @@ Add these in your constants config file:
 	define('FACEBOOK_APP_SECRET', 		'9d393951fe8420e17739a826cc10ffd9');
 	define('OPEN_311_API_KEY', 			'1O311AHX73NW26P');
 	define('OPEN_311_URL', 				'https://open311.sfgov.org/dev/v2');
-	/* define('OPEN_311_URL', 				'https://open311.sfgov.org/dev/v2'); << DEV  */
+	/* define('OPEN_311_URL', 				'https://open311.sfgov.org/v2'); << DEV  */
 	define('OPEN_311_JURISDICTION_ID', 	'sfgov.org');
 	/* define('OPEN_311_URL', 				'https://mayors24.cityofboston.gov:6443/api/open311/v2'); */
 	/* define('OPEN_311_JURISDICTION_ID', 	'cityofboston.gov'); */
