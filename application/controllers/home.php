@@ -26,14 +26,34 @@ class home extends CI_Controller {
 	
 	public function submit()
 	{
-
 		$this->load->model('service_model');
+		$this->load->helper('s3');
+		
+		//check whether a file was submitted
+		if(isset($_FILES['fileupload'])){			
+			$s3 = new S3();	
+			$s3->putBucket(AMAZON_S3_BUCKET, S3::ACL_PUBLIC_READ);
+			
+			if ($s3->putObjectFile($_FILES['fileupload']['tmp_name'], "open311_facebook", $_FILES['fileupload']['name'], S3::ACL_PUBLIC_READ)) {
+				$media_url = "http://open311_facebook.s3.amazonaws.com/" . $_FILES['fileupload']['name'];
+			}else{
+				$data['error_title'] = "File upload error";
+				$data['error_message'] = "There was an error uploading your file.  Please try again.";
+				$this->load->view('header');
+				$this->load->view('web/error', $data);
+				$this->load->view('footer');
+				return;
+			}
+		}
+		
 		$service = new Service_model();
-		if($data['response'] = $service->submit($this->input->post(), $_FILES)){
+		if($data['response'] = $service->submit($this->input->post(), $media_url)){
 			$this->load->view('header');
 			$this->load->view('web/success', $data);
 			$this->load->view('footer');
 		}else{
+			$data['error_title'] = "Connection Error";
+			$data['error_message'] = "There was an error connecting to ".CITY_NAME." Open311.  Please check back later.";
 			$this->load->view('header');
 			$this->load->view('web/error', $data);
 			$this->load->view('footer');

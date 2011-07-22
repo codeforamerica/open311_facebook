@@ -60,8 +60,10 @@ class APIBaseClass {
 			error_log('Curl error: ' . curl_error($this->_http) . "\n");
 			if($caching) return file_get_contents($filename); // get most recent cache
 		}else{
-			error_log("Caching to " . $filename);
-			if($caching) file_put_contents($filename, $result);
+			if($caching){
+				file_put_contents($filename, $result);
+				error_log("Caching to " . $filename);
+			}
 		}
 		//curl_close($this->_http);
 

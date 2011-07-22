@@ -1,2 +1,2 @@
-<h1>Connection Error</h1>
-<p>There was an error connecting to <?=CITY_NAME?> Open311.  Please check back later.</p>
+<h1><?=$error_title?></h1>
+<p><?=$error_message?></p>
