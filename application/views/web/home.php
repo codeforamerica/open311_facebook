@@ -3,6 +3,8 @@
 
 <?=form_open_multipart('home/submit')?>
 	<?=form_hidden('jurisdiction_id', 'sfgov.org')?>
+	<input type="hidden" name="lat" id="lat" />
+	<input type="hidden" name="long" id="long" />
 	<fieldset id="service_selection">
 		<div id="group">
 			<label for="group">Category</label>
@@ -34,8 +36,6 @@
 			<div class="map_help">Click the map or enter an address.</div>
 		</div>
 		<div id="map_canvas"></div>
-		<?=form_hidden('lat', null, 'id="lat"')?>
-		<?=form_hidden('long', null, 'id="long"')?>
 	</fieldset>
 
 	<fieldset id="contact">
@@ -58,7 +58,7 @@
 	</fieldset>
 	
 	<a class="large green button" id="submit">Submit</a>
-	
+	<input type="submit" style="visibility:hidden;" />
 	
 <?=form_close()?>
 

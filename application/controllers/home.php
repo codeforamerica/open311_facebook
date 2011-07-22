@@ -29,8 +29,10 @@ class home extends CI_Controller {
 		$this->load->model('service_model');
 		$this->load->helper('s3');
 		
+		$media_url = "";
+		
 		//check whether a file was submitted
-		if(isset($_FILES['fileupload'])){			
+		if($_FILES['fileupload']['name'] != ""){			
 			$s3 = new S3();	
 			$s3->putBucket(AMAZON_S3_BUCKET, S3::ACL_PUBLIC_READ);
 			
@@ -47,7 +49,15 @@ class home extends CI_Controller {
 		}
 		
 		$service = new Service_model();
-		if($data['response'] = $service->submit($this->input->post(), $media_url)){
+		$data['response'] = $service->submit($this->input->post(), $media_url);
+		if($data['response']->error){
+			$data['error_title'] = "Submission Error";
+			$data['error_message'] = $data['response']->error->description;
+			$this->load->view('header');
+			$this->load->view('web/error', $data);
+			$this->load->view('footer');		
+		}
+		elseif($data['response']->request){
 			$this->load->view('header');
 			$this->load->view('web/success', $data);
 			$this->load->view('footer');

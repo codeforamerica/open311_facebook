@@ -11,10 +11,16 @@ class Service_model extends CI_Model {
 
     }
     function submit($options, $media_url){
-    	$options['media_url'] = $media_url;
+    	$service_code = "";
+     	if(isset($options['service_code'])) $service_code = $options['service_code'];
+     	
+	   	$options['media_url'] = $media_url;
+	   	
     	$jurisdiction_id = $options['jurisdiction_id'];
     	unset($options['jurisdiction_id']);
-    	$service_code = $options['service_code'];
-    	return new SimpleXMLElement($this->open311->post_service_request($jurisdiction_id,$service_code,$options));
+    	
+    	$response = $this->open311->post_service_request($jurisdiction_id,$service_code,$options);
+		error_log($response);
+    	return new SimpleXMLElement($response);
     }
 }
