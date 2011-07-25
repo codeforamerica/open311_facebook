@@ -1,9 +1,9 @@
 <?=doctype()?>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
 <?=link_tag('css/reset.css')?>
-<?=link_tag('css/one-page.css')?>
-<?=link_tag('css/custom.css')?>
+<?=link_tag('css/style.css')?>
+<?=link_tag('css/'.$this->session->userdata('medium').'.css')?>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
@@ -21,9 +21,11 @@ var STATE_ABBR = "<?=STATE_ABBR?>";
 </head>
 <body onload="initialize()">
 <div id="content">
+<? if($this->session->userdata('medium') == 'web'): ?>
 <header class="clearfix">
 	<h1 id="project_name"><?=PROJECT_NAME?></h1>
 	<h2 id="city_name"><?=CITY_NAME?></h2>
 </header>
+<? endif; ?>
 <div id="main">
 

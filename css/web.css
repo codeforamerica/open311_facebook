@@ -1,0 +1,44 @@
+/* CSS Template by Stanford Rosenthal http://rosenthal.co */
+
+/* ----------------- Page Layout --------------- */
+
+body {
+	margin: 0;
+	padding: 0;
+	font-weight: 300;
+	color: #333;
+	font-family: 'Lato', sans-serif;
+/* 	@TODO: Find pattern */
+	background-color:#555; 
+}
+#content {
+	background-color:#fff;
+	width:650px;
+/* 	padding:20px 30px; */
+	margin:1em auto 1ex auto;
+	border-radius: 10px; -moz-border-radius: 10px;
+	-moz-box-shadow: 0px 0px 20px #444; -webkit-box-shadow: 0px 0px 20px #444; box-shadow: 0px 0px 20px #444;
+	overflow: hidden;
+	padding-bottom: 2ex;
+}
+
+#main{
+	padding:10px;
+}
+
+.map_help{
+	font-size: 80%;
+}
+h3#project_description{
+	margin:.4em 2em .7em 2em;
+}
+
+/* ------------- Footer -------------- */
+
+
+footer{
+	color:#ddd;
+}
+footer a{
+	color:#eee;
+}

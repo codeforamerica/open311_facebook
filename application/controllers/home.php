@@ -3,29 +3,47 @@
 class home extends CI_Controller {
 
 	public function __construct() {
-		parent::__construct();
+		parent::__construct();		
 	}
 	
-	public function index()
+	public function index($medium = 'web')
 	{	
+	
+		$data['first'] = "";
+		$data['last'] = "";
+		
+		$this->session->set_userdata('medium', $medium);
 		$this->load->model('group_model');
 		$this->group = new Group_model();
 
-		if($data['group_names'] = $this->group->get_names()):
-				
+		$facebook = new Facebook();
+		$user = $facebook->getUser();	
+
+		if ($user) {
+		  try {
+		    $user_profile = $facebook->api('/me');
+		   	$data['first'] = $user_profile['first_name'];
+		   	$data['last'] = $user_profile['last_name'];
+		  } catch (FacebookApiException $e) {
+		    error_log($e);
+		    $user = null;
+		  }
+		}		
+
 		$this->load->view('header', $data);
-		$this->load->view('web/home', $data);
-		$this->load->view('footer');
-		
+		if($data['group_names'] = $this->group->get_names()):
+			$this->load->view('home', $data);
 		else:
-			$this->load->view('header', $data);
-			$this->load->view('web/error', $data);
-			$this->load->view('footer');	
+			$data['error_title'] = "Connection Error";
+			$data['error_message'] = "There was an error connecting to ".CITY_NAME." Open311.  Please check back later.";
+			$this->load->view('error', $data);
 		endif;
+		$this->load->view('footer');	
 	}
 	
 	public function submit()
 	{
+
 		$this->load->model('service_model');
 		$this->load->helper('s3');
 		
@@ -42,7 +60,7 @@ class home extends CI_Controller {
 				$data['error_title'] = "File upload error";
 				$data['error_message'] = "There was an error uploading your file.  Please try again.";
 				$this->load->view('header');
-				$this->load->view('web/error', $data);
+				$this->load->view('error', $data);
 				$this->load->view('footer');
 				return;
 			}
@@ -54,18 +72,18 @@ class home extends CI_Controller {
 			$data['error_title'] = "Submission Error";
 			$data['error_message'] = $data['response']->error->description;
 			$this->load->view('header');
-			$this->load->view('web/error', $data);
+			$this->load->view('error', $data);
 			$this->load->view('footer');		
 		}
 		elseif($data['response']->request){
 			$this->load->view('header');
-			$this->load->view('web/success', $data);
+			$this->load->view('success', $data);
 			$this->load->view('footer');
 		}else{
 			$data['error_title'] = "Connection Error";
 			$data['error_message'] = "There was an error connecting to ".CITY_NAME." Open311.  Please check back later.";
 			$this->load->view('header');
-			$this->load->view('web/error', $data);
+			$this->load->view('error', $data);
 			$this->load->view('footer');
 		}
 		

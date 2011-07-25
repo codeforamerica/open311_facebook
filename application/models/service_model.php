@@ -20,7 +20,6 @@ class Service_model extends CI_Model {
     	unset($options['jurisdiction_id']);
     	
     	$response = $this->open311->post_service_request($jurisdiction_id,$service_code,$options);
-		error_log($response);
     	return new SimpleXMLElement($response);
     }
 }

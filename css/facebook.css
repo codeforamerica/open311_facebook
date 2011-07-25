@@ -1,0 +1,39 @@
+/* CSS Template by Stanford Rosenthal http://rosenthal.co */
+
+/* ----------------- Page Layout --------------- */
+
+body {
+	margin: 0;
+	padding: 0;
+	font-weight: 300;
+	color: #333;
+	font-family: 'Lato', sans-serif;
+	width: 500px;
+}
+#content {
+	width:100%;
+}
+
+#main{
+	padding:0px;
+}
+
+.map_help{
+	font-size: 70%;
+}
+h3#project_description{
+	margin:0 .5em .7em .5em;
+	font-size:200%;
+}
+
+
+
+/* ------------- Footer -------------- */
+
+
+footer{
+	color:#333;
+}
+footer a{
+	color:#000;
+}

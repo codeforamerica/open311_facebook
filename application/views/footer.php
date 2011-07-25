@@ -2,5 +2,5 @@
 	</div><!-- content -->
 </div><!-- wrapper -->
 <footer>
-	&copy; <?=date('Y')?> Code for America
+	Created by <a href="http://codeforamerica.org">Code for America</a>.
 </footer>
