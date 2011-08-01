@@ -70,23 +70,21 @@
 
 
 	FB.init({
-		appId  : '157847207617169',
+		appId  : '<?=FACEBOOK_APP_ID?>',
 		status : true, // check login status
 		cookie : true, // enable cookies to allow the server to access the session
 		xfbml  : true  // parse XFBML
 	});
 	
 	FB.login(function(response) {
-		  if (response.session && response.perms) {
-			FB.api('/me', function(response) {
-		  		if(response.first_name){$('#first').hide(); $('#first').val(response.first_name);}
-		  		if(response.last_name){$('#last').hide(); $('#last').val(response.last_name);}
-		  		if(response.email){$('#email').hide(); $('#email').val(response.email);}
-		  		if(response.mobile_phone){$('#phone').hide(); $('#phone').val(response.mobile_phone);}
-		  		if(response.name){$('#logged_in').html('Signed in as ' + response.name); $('#logged_in').fadeIn();}
-			});
-		  }
-		}, {perms:'email'});
+		FB.api('/me', function(response) {
+	  		if(response.first_name){$('#first').hide(); $('#first').val(response.first_name);}
+	  		if(response.last_name){$('#last').hide(); $('#last').val(response.last_name);}
+	  		if(response.email){$('#email').hide(); $('#email').val(response.email);}
+	  		if(response.mobile_phone){$('#phone').hide(); $('#phone').val(response.mobile_phone);}
+	  		if(response.name){$('#logged_in').html('Signed in as ' + response.name); $('#logged_in').fadeIn();}
+		});
+	}, {perms:'email'});
 
 	
 </script>

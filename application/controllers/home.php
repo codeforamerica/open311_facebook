@@ -16,20 +16,6 @@ class home extends CI_Controller {
 		$this->load->model('group_model');
 		$this->group = new Group_model();
 
-		$facebook = new Facebook();
-		$user = $facebook->getUser();	
-
-		if ($user) {
-		  try {
-		    $user_profile = $facebook->api('/me');
-		   	$data['first'] = $user_profile['first_name'];
-		   	$data['last'] = $user_profile['last_name'];
-		  } catch (FacebookApiException $e) {
-		    error_log($e);
-		    $user = null;
-		  }
-		}		
-
 		$this->load->view('header', $data);
 		if($data['group_names'] = $this->group->get_names()):
 			$this->load->view('home', $data);
