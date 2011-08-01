@@ -6,8 +6,8 @@ For now get the config folder from a fresh CodeIgniter install.  I'll add them t
 Add these in your constants config file:
 
 	define('FACEBOOK_APP_ID', 			'157847207617169');
-	define('FACEBOOK_APP_SECRET', 		'9d393951fe8420e17739a826cc10ffd9');
-	define('OPEN_311_API_KEY', 			'1O311AHX73NW26P');
+	define('FACEBOOK_APP_SECRET', 		'');
+	define('OPEN_311_API_KEY', 			'');
 	define('OPEN_311_URL', 				'https://open311.sfgov.org/v2');
 	/* define('OPEN_311_URL', 				'https://open311.sfgov.org/dev/v2'); << DEV  */
 	define('OPEN_311_JURISDICTION_ID', 	'sfgov.org');
