@@ -57,6 +57,14 @@
 		</div>
 		<p id="logged_in" class="invisible"></p>
 	</fieldset>
+
+	<div id="fb_connect">
+		<div class="bracket"></div>
+		<p class="explanation">This contact info lets departments contact you for more information. Your email also allows you to track your service request.</p>
+		<p><a id="connect">Autofill with Facebook</a></p>
+	</div>
+	
+	<div style="clear:both"></div>
 	
 	<a class="large green button" id="submit">Submit</a>
 	<input type="submit" style="visibility:hidden;" />
@@ -76,15 +84,17 @@
 		xfbml  : true  // parse XFBML
 	});
 	
-	FB.login(function(response) {
-		FB.api('/me', function(response) {
-	  		if(response.first_name){$('#first').hide(); $('#first').val(response.first_name);}
-	  		if(response.last_name){$('#last').hide(); $('#last').val(response.last_name);}
-	  		if(response.email){$('#email').hide(); $('#email').val(response.email);}
-	  		if(response.mobile_phone){$('#phone').hide(); $('#phone').val(response.mobile_phone);}
-	  		if(response.name){$('#logged_in').html('Signed in as ' + response.name); $('#logged_in').fadeIn();}
-		});
-	}, {perms:'email'});
-
+$(document).ready(function(){
+    $('#connect').click(function(){
+		FB.login(function(response) {
+			FB.api('/me', function(response) {
+		  		if(response.first_name){$('#first input').val(response.first_name);}
+		  		if(response.last_name){$('#last input').val(response.last_name);}
+		  		if(response.email){$('#email input').val(response.email);}
+		  		if(response.mobile_phone){$('#phone input').val(response.mobile_phone);}
+			});
+		}, {perms:'email'});
+	});
+});
 	
 </script>

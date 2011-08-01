@@ -26,6 +26,17 @@ h3#project_description{
 	font-size:200%;
 }
 
+#fb_connect{
+	float:left;
+	width:177px;
+	font-size: 75%;
+	margin-top:.5em;
+	color: #666;
+}
+#fb_connect p{	line-height: 1.2em; }
+#fb_connect .bracket{ height:95px; }
+#fb_connect .explanation{ margin-top:.5em; }
+}
 
 
 /* ------------- Footer -------------- */

@@ -20,6 +20,6 @@ $(document).ready(function(){
     	codeAddress($(this).val());
     })
     
-
+    
 });
 

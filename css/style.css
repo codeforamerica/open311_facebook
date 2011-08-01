@@ -36,6 +36,35 @@ p#logged_in{
 	color:#555;
 	font-style: italic;
 }
+fieldset#contact{
+	float:left;
+	margin-top: 0;
+}
+#fb_connect{
+	float:left;
+	width:310px;
+	font-size: 80%;
+	color: #666;
+	line-height: 1em;
+}
+#fb_connect p{
+	margin:.5em;
+}
+#fb_connect .explanation{
+	margin-top:2em;
+}
+#fb_connect .bracket{
+	float:left;
+	margin:.7em;
+	height:105px;
+	border-width: 1px 1px 1px 0;
+	border-color: #ccc;
+	border-style: solid;
+	width: 10px;
+}
+#fb_connect .connect{
+	float:right;
+}
 
 /* ----------------- Elements ----------------- */
 header{
@@ -49,9 +78,11 @@ form{
 	margin:1ex 1em;
 }
 
+/*
 fieldset{
 	margin:1em 0;
 }
+*/
 .field{
 	line-height:1.8em;
 }
