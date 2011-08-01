@@ -20,13 +20,18 @@ function createMarker(latlng, name, html) {
     var marker = new google.maps.Marker({
         position: latlng,
         map: map,
+        draggable: true,
         zIndex: Math.round(latlng.lat()*-100000)<<5
         });
 
     google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(contentString); 
         infowindow.open(map,marker);
-        });
+    });
+    google.maps.event.addListener(marker, "dragend", function() {
+		$('#lat').val(marker.getPosition().lat());
+		$('#long').val(marker.getPosition().lng());
+  	});
     google.maps.event.trigger(marker, 'click');    
     return marker;
 }
