@@ -36,9 +36,10 @@ class home extends CI_Controller {
 		$media_url = "";
 		
 		//check whether a file was submitted
-		if($_FILES['fileupload']['name'] != ""){			
-			$s3 = new S3();	
+		if($_FILES['fileupload']['name'] != ""){	
+			$s3 = new S3(AMAZON_S3_KEY, AMAZON_S3_SECRET);
 			$s3->putBucket(AMAZON_S3_BUCKET, S3::ACL_PUBLIC_READ);
+						
 			
 			if ($s3->putObjectFile($_FILES['fileupload']['tmp_name'], "open311_facebook", $_FILES['fileupload']['name'], S3::ACL_PUBLIC_READ)) {
 				$media_url = "http://open311_facebook.s3.amazonaws.com/" . $_FILES['fileupload']['name'];
