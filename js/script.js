@@ -23,6 +23,12 @@ $(document).ready(function(){
     	codeAddress($('#address_string').val());
     })
     
+    $('#address_string').bind('keypress', function(e) {
+        if(e.keyCode==13){
+        	codeAddress($('#address_string').val());
+        return false;
+        }
+	});
     
 });
 

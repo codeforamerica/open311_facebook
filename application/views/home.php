@@ -33,7 +33,7 @@
 		<div class="address field">
 			<?=form_label('Address','address_string')?>
 			<?=form_input('address_string', null, 'id="address_string"')?>		
-			<button id="mapit" onclick="return false">Map it</button>
+			<input type="button" id="mapit" value="Map it"></button>
 			<span class="map_help">Click location on the map</span>
 		</div>
 		<div id="map_canvas"></div>
