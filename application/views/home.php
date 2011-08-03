@@ -61,7 +61,7 @@
 
 	<div id="fb_connect">
 		<div class="bracket"></div>
-		<p class="explanation">This contact info lets departments contact you for more information. Your email also allows you to track your service request.</p>
+		<p class="explanation"><?=CONTACT_DISCLAIMER?></p>
 		<p><a id="connect">Autofill with Facebook</a></p>
 	</div>
 	

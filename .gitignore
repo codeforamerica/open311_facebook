@@ -1,4 +1,4 @@
 .DS_Store
 application/.DS_Store
-application/config
+constants.php
 cache
