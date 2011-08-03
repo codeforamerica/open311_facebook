@@ -8,7 +8,7 @@ Application Configuration
 - Upload these files to your server.
 - Rename htaccess to .htaccess on your server.
 - Open config/constants.php
-- Change CITY_LAT, CITY_LONG, CITY_NAME, and STATE_ABBR to the appropriate values.
+- Change CITY_LAT, CITY_LONG, CITY_NAME, and STATE_ABBR to the appropriate values.  Find your city's coordinates at http://www.travelmath.com (use decimal form, not degrees)
 - Keep this file open as you will need to change several settings throughout the installation process.
 
 Privacy Policy
@@ -51,15 +51,25 @@ You can access your new Open311 app outside of Facebook.  Simply navigate to the
 
 Development
 ===========
-This app was originally developed by Stanford Rosenthal for Code for America.  
+This app was originally designed and developed by Stanford Rosenthal for Code for America with guidance from The City of San Francisco and The City of Boston.  
+
+Language: PHP (tested on PHP5)
 
 Framework: Codeigniter (http://codeigniter.com/)
 
-Libraries:
+Libraries
+--------
 
 - API Baseclass Helper by Ronaldo Barbachano (https://github.com/codeforamerica/PHP-API-Template)
 - Open311_PHP by Ronaldo Barbachano (https://github.com/codeforamerica/open311_php)
 - Amazon-s3-php-class by Donovan Schönknecht (https://github.com/tpyo/amazon-s3-php-class)
+- Facebook Javascript SDK by Facebook (http://developers.facebook.com/docs/reference/javascript)
+- jQuery (http://jquery.com)
+- Google Maps Javascript API v3 (http://code.google.com/apis/maps/documentation/javascript/)
+
+Testing
+------
+There are no unit tests.  Some cities provide a development URL which allows you to submit test requests.
 
 Copyright
 =========
@@ -67,4 +77,4 @@ Copyright (c) 2011 Code for America Laboratories
 
 See [LICENSE](https://github.com/codeforamerica/open311_facebook/blob/master/LICENSE.md) for details.
 
--- Need to add tracker --
+[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/open311_facebook.png)](http://stats.codeforamerica.org/projects/open311_facebook)
