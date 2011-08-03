@@ -67,8 +67,9 @@
 	
 	<div style="clear:both"></div>
 	
-	<a class="large green button" id="submit">Submit</a>
-	<input type="submit" style="visibility:hidden;" />
+	<div id="submit_wrapper"><a class="large green button" id="submit">Submit</a></div>
+	
+	<input type="submit" style="visibility:hidden; display:none; height:0;" /><!--  For better browser compatibility  -->
 	
 <?=form_close()?>
 
