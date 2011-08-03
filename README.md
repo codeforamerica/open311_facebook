@@ -6,9 +6,10 @@ This is a Facebook App for cities that use Open311.  It can be used as a Faceboo
 Application Configuration
 ------------------------
 - Upload these files to your server.
-- Rename htaccess to .htaccess on your server.
-- Open config/constants.php
+- If you don't see a file called .htaccess, rename htaccess-visible to .htaccess on your server.
+- Rename config/constants-template.php to constants.php, and open it.
 - Change CITY_LAT, CITY_LONG, CITY_NAME, and STATE_ABBR to the appropriate values.  Find your city's coordinates at http://www.travelmath.com (use decimal form, not degrees)
+- Optionally, change PROJECT_NAME, PROJECT_DESCRIPTION, CONTACT_DISCLAIMER, and SUCCESS_MESSAGE to whatever fits your needs.
 - Keep this file open as you will need to change several settings throughout the installation process.
 
 Privacy Policy
