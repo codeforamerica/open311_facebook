@@ -19,6 +19,9 @@ $(document).ready(function(){
     $('#address_string').change(function(){
     	codeAddress($(this).val());
     })
+    $('#mapit').click(function(){
+    	codeAddress($('#address_string').val());
+    })
     
     
 });

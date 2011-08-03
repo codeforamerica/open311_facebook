@@ -2,7 +2,7 @@
 
 
 <?=form_open_multipart('home/submit')?>
-	<?=form_hidden('jurisdiction_id', 'sfgov.org')?>
+	<?=form_hidden('jurisdiction_id', OPEN_311_JURISDICTION_ID)?>
 	<input type="hidden" name="lat" id="lat" />
 	<input type="hidden" name="long" id="long" />
 	<fieldset id="service_selection">
@@ -33,7 +33,8 @@
 		<div class="address field">
 			<?=form_label('Address','address_string')?>
 			<?=form_input('address_string', null, 'id="address_string"')?>		
-			<div class="map_help">Click the map or enter an address.</div>
+			<button id="mapit" onclick="return false">Map it</button>
+			<span class="map_help">Click location on the map</span>
 		</div>
 		<div id="map_canvas"></div>
 	</fieldset>
@@ -76,24 +77,34 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script>
 
+	    
 
-	FB.init({
-		appId  : '<?=FACEBOOK_APP_ID?>',
-		status : true, // check login status
-		cookie : true, // enable cookies to allow the server to access the session
-		xfbml  : true  // parse XFBML
-	});
-	
+FB.init({
+	appId  : '<?=FACEBOOK_APP_ID?>',
+	status : true, // check login status
+	cookie : true, // enable cookies to allow the server to access the session
+	xfbml  : true  // parse XFBML
+});
+
+FB.api('/me', function(response) {
+  if(response.email) autofill();
+});
+
+function autofill(){
+	FB.login(function(response) {
+		FB.api('/me', function(response) {
+	  		if(response.first_name){$('#first input').val(response.first_name);}
+	  		if(response.last_name){$('#last input').val(response.last_name);}
+	  		if(response.email){$('#email input').val(response.email);}
+	  		if(response.mobile_phone){$('#phone input').val(response.mobile_phone);}
+	  		$('#connect').fadeOut();
+		});
+	}, {perms:'email'});
+}
+
 $(document).ready(function(){
     $('#connect').click(function(){
-		FB.login(function(response) {
-			FB.api('/me', function(response) {
-		  		if(response.first_name){$('#first input').val(response.first_name);}
-		  		if(response.last_name){$('#last input').val(response.last_name);}
-		  		if(response.email){$('#email input').val(response.email);}
-		  		if(response.mobile_phone){$('#phone input').val(response.mobile_phone);}
-			});
-		}, {perms:'email'});
+    	autofill();
 	});
 });
 	

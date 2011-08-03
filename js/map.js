@@ -7,13 +7,9 @@ var lat = CITY_LAT;
 var long = CITY_LONG;
 var city = CITY_NAME + ', ' + STATE_ABBR;
 
-var infowindow = new google.maps.InfoWindow(
-  { 
-    size: new google.maps.Size(150,50)
-  });
-
 // A function to create the marker and set up the event window function 
 function createMarker(latlng, name, html) {
+    	$('.map_help').html('Drag marker to move it');
 	$('#lat').val(latlng.lat());
 	$('#long').val(latlng.lng());
     var contentString = html;
@@ -24,15 +20,13 @@ function createMarker(latlng, name, html) {
         zIndex: Math.round(latlng.lat()*-100000)<<5
         });
 
-    google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(contentString); 
-        infowindow.open(map,marker);
-    });
     google.maps.event.addListener(marker, "dragend", function() {
 		$('#lat').val(marker.getPosition().lat());
 		$('#long').val(marker.getPosition().lng());
+		codeLatLng(marker.getPosition());
   	});
-    google.maps.event.trigger(marker, 'click');    
+    google.maps.event.trigger(marker, 'click');   
+	codeLatLng(marker.getPosition());
     return marker;
 }
 
@@ -51,10 +45,6 @@ function initialize() {
   }
   map = new google.maps.Map(document.getElementById("map_canvas"),
                                 myOptions);
- 
-  google.maps.event.addListener(map, 'click', function() {
-        infowindow.close();
-        });
 
   google.maps.event.addListener(map, 'click', function(event) {
 	//call function to create marker
@@ -64,6 +54,7 @@ function initialize() {
          }
 	 marker = createMarker(event.latLng, "name");
   });
+  
 
 }
 
@@ -80,13 +71,38 @@ function initialize() {
         map.setCenter(results[0].geometry.location);
         marker = new google.maps.Marker({
             map: map,
-            position: results[0].geometry.location
+         	draggable: true,
+           	position: results[0].geometry.location
         });
+		$('#lat').val(marker.getPosition().lat());
+		$('#long').val(marker.getPosition().lng());
+		map.setZoom(18);
+    	$('.map_help').html('Drag marker to move it');
+    	$('#email input').focus();
+    	
+    	    google.maps.event.addListener(marker, "dragend", function() {
+		$('#lat').val(marker.getPosition().lat());
+		$('#long').val(marker.getPosition().lng());
+		codeLatLng(marker.getPosition());
+  	});
+  	
+  	
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
     });
   }
-    
+  
+  function codeLatLng(latlng){
+  	// http://code.google.com/apis/maps/documentation/javascript/services.html#ReverseGeocoding
+	    geocoder.geocode({'latLng': latlng}, function(results, status) {
+	      if (status == google.maps.GeocoderStatus.OK) {
+	        if (results[1]) {
+	          $('#address_string').val(results[0].formatted_address);
+	        }
+	      } 
+	    });
+  }
+
 
 //]]>

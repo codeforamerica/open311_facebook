@@ -65,6 +65,9 @@ fieldset#contact{
 #fb_connect .connect{
 	float:right;
 }
+#fb_connect #connect{
+	font-weight: bold;
+}
 
 /* ----------------- Elements ----------------- */
 header{

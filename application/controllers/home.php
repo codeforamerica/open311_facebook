@@ -54,6 +54,7 @@ class home extends CI_Controller {
 		
 		$service = new Service_model();
 		$data['response'] = $service->submit($this->input->post(), $media_url);
+		error_log(print_r($data['response'], true));
 		if($data['response']->error){
 			$data['error_title'] = "Submission Error";
 			$data['error_message'] = $data['response']->error->description;
