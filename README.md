@@ -13,12 +13,13 @@ Application Configuration
 
 Privacy Policy
 --------------
-Facebook requires a Privacy Policy for all apps.  For an example privacy policy, see http://www.sf311.org/index.aspx?page=769.
-Facebook allows for a Terms of Service as well.  For an (outdated) example Terms of Service, see http://www.sf311.org/index.aspx?page=768
+- Facebook requires a Privacy Policy for all apps.  For an example privacy policy, see http://www.sf311.org/index.aspx?page=769.
+- Facebook allows for a Terms of Service as well.  For an (outdated) example Terms of Service, see http://www.sf311.org/index.aspx?page=768
 
 Facebook Configuration
 ----------------------
 You'll need to setup a new Facebook app.
+
 - Go to https://www.facebook.com/developers/apps.php and click "+ Set Up New App"
 - Complete the setup process.  You will be brought to the "Basic Information" tab of your new app.  Complete this form, including Privacy Policy URL, and click "Save Changes."
 - Click "Facebook Integration" on the left and scroll down to "Page Tabs"
@@ -32,6 +33,7 @@ You'll need an Amazon AWS account to store user images on Amazon S3.  If you don
 Note: Amazon S3 charges a minimal fee based on your usage.  It is unlikely that you will go over a few bucks a month.  For details, see http://aws.amazon.com/s3/pricing/
 
 Complete the registration and then follow these directions:
+
 - Go to https://console.aws.amazon.com/s3/home
 - Click "Create Bucket" and name your bucket (e.g. SF_open311_facebook)
 - In config/constants.php, set AMAZON_S3_BUCKET to the name of your bucket.
@@ -52,7 +54,9 @@ Development
 This app was originally developed by Stanford Rosenthal for Code for America.  
 
 Framework: Codeigniter (http://codeigniter.com/)
+
 Libraries:
+
 - API Baseclass Helper by Ronaldo Barbachano (https://github.com/codeforamerica/PHP-API-Template)
 - Open311_PHP by Ronaldo Barbachano (https://github.com/codeforamerica/open311_php)
 - Amazon-s3-php-class by Donovan Schönknecht (https://github.com/tpyo/amazon-s3-php-class)
@@ -60,6 +64,7 @@ Libraries:
 Copyright
 =========
 Copyright (c) 2011 Code for America Laboratories
-See [LICENSE](https://github.com/codeforamerica/JobOps/blob/master/LICENSE.mkd) for details.
+
+See [LICENSE](https://github.com/codeforamerica/open311_facebook/blob/master/LICENSE.md) for details.
 
 -- Need to add tracker --
