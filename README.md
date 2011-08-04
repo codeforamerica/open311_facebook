@@ -14,8 +14,8 @@ Application Configuration
 
 Privacy Policy
 --------------
-- Facebook requires a Privacy Policy for all apps. ([http://www.sf311.org/index.aspx?page=769](example))
-- Facebook allows for a Terms of Service as well.  ([http://www.sf311.org/index.aspx?page=768](example))
+- Facebook requires a Privacy Policy for all apps. ([example](http://www.sf311.org/index.aspx?page=769))
+- Facebook allows for a Terms of Service as well.  ([example](http://www.sf311.org/index.aspx?page=768))
 
 
 Amazon S3 Configuration
@@ -26,8 +26,8 @@ Note: Amazon S3 charges minimal [fees](http://aws.amazon.com/s3/pricing/) based 
 
 Complete the registration and then follow these directions:
 
-- Go to your [Amazon AWS console](https://console.aws.amazon.com/s3/home)
-- Click "Create Bucket" and name your bucket (e.g. SF_open311_facebook)
+- Go to your [Amazon AWS console](https://console.aws.amazon.com/s3/home).
+- Click "Create Bucket" and name your bucket (e.g. SF_open311_facebook).
 - In config/constants.php, set `AMAZON_S3_BUCKET` to the name of your bucket.
 - Go to the [Access Credentials page](https://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key#access_credentials) and click "Create a new Access Key" if there is not one already listed.
 - You will need to copy the values under "Access Key ID" and "Secret Access Key" into config/constants.php where it says `AMAZON_S3_KEY` and `AMAZON_S3_SECRET` respectively. 
@@ -41,12 +41,12 @@ Facebook Configuration
 ----------------------
 You'll need to setup a new Facebook app.  This assumes you are already an administrator of your city's Facebook page.
 
-- [Create an app](https://www.facebook.com/developers/createapp.php)
+- [Create an app](https://www.facebook.com/developers/createapp.php).
 - After you complete the setup process, you will be brought to the "Basic Information" tab of your new app.  Complete this form, including Privacy Policy URL, and click "Save Changes."
-- Click "Facebook Integration" on the left and scroll down to "Page Tabs"
+- Click "Facebook Integration" on the left and scroll down to "Page Tabs."
 - Fill in Tab Name (e.g. Open311) and  Tab URL.  The URL will be [base directory]/facebook.  Click Save Changes.
 - You will be brought to your app's developer page.  You will need to copy the values under "App ID," "API Key," and "App Secret" into config/constants.php where it says `FACEBOOK_APP_ID`, `FACEBOOK_APP_KEY`, and `FACEBOOK_APP_SECRET`, respectively.
-- Go to http://www.facebook.com/apps/application.php?id=[App ID] and click "Add to My Page" on the bottom left, and then select your city's page.
+- Go to http://www.facebook.com/apps/application.php?id=`App ID` and click "Add to My Page" on the bottom left, and then select your city's page.
 - Go to your city's page, and you should see your Open311 app on the left sidebar.  At this point, your app should be fully functional.
 - **Optional:** Set this tab as the default view for your page by click "Edit Info" beneath your page's name, clicking "Manage Permissions" on the left sidebar, and then selecting your Open311 app in the "Default Landing Tab" dropdown.  Note: due to a bug in Facebook, you will still see the Wall by default, but other users to your page will see Open311 by default.  You can test this by logging out of Facebook and going to your page.
 - **Tip:** Once your page has 25 "fans," you can get a custom URL by going to "Edit Info" > "Basic Information" and selecting a Username.  This will allow users to access your app at a URL like http://facebook.com/SF311.
