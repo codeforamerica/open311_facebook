@@ -9,7 +9,7 @@
 	<fieldset id="service_selection">
 		<div id="group">
 			<label for="group">Category</label>
-			<select name="group">
+			<select name="group" id="group_select">
 				<option value="null">-- Select a Category --</option>
 			<? foreach($group_names as $group_name): ?>
 				<option value="<?=str_replace(" ","_",$group_name)?>"><?=$group_name?></option>

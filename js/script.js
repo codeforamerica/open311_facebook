@@ -16,6 +16,22 @@ $(document).ready(function(){
     	$('form').submit();
     })
     
+    $('form').submit(function(){
+    	if($('#group_select').val() == 'null'){
+    		alert('Please select a Category');
+    		return false;
+    	}
+    	if($('#service_code').val() == 'null'){
+    		alert('Please select a Service');
+    		return false;
+    	}
+    	if(!$('#long').val()){
+    		alert('Please indicate a location on the map');
+    		return false;
+    	}
+
+    });
+    
     $('#address_string').change(function(){
     	codeAddress($(this).val());
     })

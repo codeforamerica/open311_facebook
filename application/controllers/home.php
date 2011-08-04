@@ -82,19 +82,25 @@ class home extends CI_Controller {
 		$selected_group = str_replace("_"," ",$selected_group);
 		$services = $group->get($selected_group);
 		if(sizeof($services) == 1): ?>
-			<input type="hidden" name="service_code" value="<?=$services[0]->service_code?>" />
-			<p id="<?=$services[0]->service_code?>_description" class="description"><?=$services[0]->description?></p>
+			<input type="hidden" name="service_code" value="<?=$services[0]->service_code?>" id="service_code" />
+			<p id="<?=$services[0]->service_code?>_description" class="description">
+			<?	if($services[0]->description) echo $services[0]->description;
+				else echo "Please provide details of your request."; ?>
+			</p>
 		<? else:
 			?>
 			<label for="service_code">Service</label>
-			<select name="service_code">
+			<select name="service_code" id="service_code">
 				<option value="null">-- Select a Service --</option><?
 			foreach($services as $service): ?>
 				<option value="<?=$service->service_code?>"><?=str_replace("_"," ",$service->service_name)?></option>
 			<? endforeach; ?>
 			</select>
 			<? foreach($services as $service): ?>
-				<p id="<?=$service->service_code?>_description" class="invisible description"><?=$service->description?></p>
+				<p id="<?=$service->service_code?>_description" class="invisible description">
+				<?	if($service->description) echo $service->description;
+					else echo "Please provide details of your request."; ?>
+				</p>
 			<? endforeach;
 		endif;
 	}
