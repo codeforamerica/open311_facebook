@@ -20,6 +20,13 @@ class Service_model extends CI_Model {
     	unset($options['jurisdiction_id']);
     	
     	$response = $this->open311->post_service_request($jurisdiction_id,$service_code,$options);
-    	return new SimpleXMLElement($response);
+    	try {
+		   return @new SimpleXMLElement($response);
+		} catch (Exception $e) {
+		   error_log("Response is not XML");
+		   error_log($response);
+		   return false;
+		}
+    	
     }
 }

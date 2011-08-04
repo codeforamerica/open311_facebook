@@ -8,23 +8,19 @@ class home extends CI_Controller {
 	
 	public function index($medium = 'web')
 	{	
-	
-		$data['first'] = "";
-		$data['last'] = "";
-		
-		$this->session->set_userdata('medium', $medium);
+		$this->session->set_userdata('medium', $medium); // Facebook or web
 		$this->load->model('group_model');
-		$this->group = new Group_model();
+		$group = new Group_model();
 
-		$this->load->view('header', $data);
-		if($data['group_names'] = $this->group->get_names()):
-			$this->load->view('home', $data);
+		if($data['group_names'] = $group->get_names()):
+			$this->load->vars($data);
+			$this->load->view('home');
 		else:
 			$data['error_title'] = "Connection Error";
 			$data['error_message'] = "There was an error connecting to ".CITY_NAME." Open311.  Please check back later.";
-			$this->load->view('error', $data);
+			$this->load->vars($data);
+			$this->load->view('error');
 		endif;
-		$this->load->view('footer');	
 	}
 	
 	public function submit()
@@ -46,48 +42,47 @@ class home extends CI_Controller {
 			}else{
 				$data['error_title'] = "File upload error";
 				$data['error_message'] = "There was an error uploading your file.  Please try again.";
-				$this->load->view('header');
-				$this->load->view('error', $data);
-				$this->load->view('footer');
+				$this->load->vars($data);
+				$this->load->view('error');
 				return;
 			}
 		}
 		
 		$service = new Service_model();
-		$data['response'] = $service->submit($this->input->post(), $media_url);
-		error_log(print_r($data['response'], true));
-		if($data['response']->error){
-			$data['error_title'] = "Submission Error";
-			$data['error_message'] = $data['response']->error->description;
-			$this->load->view('header');
-			$this->load->view('error', $data);
-			$this->load->view('footer');		
+		if($data['response'] = $service->submit($this->input->post(), $media_url)){
+			error_log(print_r($data['response'], true));
+			
+			if($data['response']->error){
+				$data['error_title'] = "Submission Error";
+				$data['error_message'] = $data['response']->error->description;
+				$this->load->vars($data);
+				$this->load->view('error');
+				return;
+			}elseif($data['response']->request){
+				$this->load->vars($data);
+				$this->load->view('success');
+				return;
+			}
 		}
-		elseif($data['response']->request){
-			$this->load->view('header');
-			$this->load->view('success', $data);
-			$this->load->view('footer');
-		}else{
-			$data['error_title'] = "Connection Error";
-			$data['error_message'] = "There was an error connecting to ".CITY_NAME." Open311.  Please check back later.";
-			$this->load->view('header');
-			$this->load->view('error', $data);
-			$this->load->view('footer');
-		}
+
+		$data['error_title'] = "Connection Error";
+		$data['error_message'] = "There was an error connecting to ".CITY_NAME." Open311.  Please check back later.";
+		$this->load->vars($data);
+		$this->load->view('error');
 		
 	}
 
 	// ----- AJAX ------- //
 	
-	public function get_services_selector($group){
+	public function get_services_selector($selected_group){
 		$this->load->model('group_model');
-		$this->group = new Group_model();
+		$group = new Group_model();
 
-		if($group == "null") return;
-		$group = str_replace("_"," ",$group);
-		$services = $this->group->get($group);
+		if($selected_group == "null") return;
+		$selected_group = str_replace("_"," ",$selected_group);
+		$services = $group->get($selected_group);
 		if(sizeof($services) == 1): ?>
-			<input type="hidden" value="<?=$services[0]?>" />
+			<input type="hidden" name="service_code" value="<?=$services[0]->service_code?>" />
 			<p id="<?=$services[0]->service_code?>_description" class="description"><?=$services[0]->description?></p>
 		<? else:
 			?>

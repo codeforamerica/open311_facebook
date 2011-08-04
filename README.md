@@ -81,6 +81,8 @@ Future ideas
 -------------
 - A hosted solution with an admin setup page, which would allow cities to bypass steps 1-5 in Facebook Configuration and steps 1-3 in Application Configuration.
 - A universal app that uses HTML5 to detect user's location and/or has a drop-down to select city.
+- Ability for user to see their submitted reports
+- Use Facebook notifications API to update user on reports.
 - Integration with Code For America's 311Center project
 - Mobile version (image uploading would be tricky)
 

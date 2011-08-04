@@ -1,3 +1,4 @@
+<?=$this->load->view('header')?>
 <h3 id="project_description"><?=PROJECT_DESCRIPTION?></h3>
 
 
@@ -46,11 +47,11 @@
 		</div>
 		<div class="field" id="first">
 			<?=form_label('First','first_name')?>
-			<?=form_input('first_name', $first)?>
+			<?=form_input('first_name')?>
 		</div>
 		<div class="field" id="last">
 			<?=form_label('Last','last_name')?>
-			<?=form_input('last_name', $last)?>
+			<?=form_input('last_name')?>
 		</div>
 		<div class="field" id="phone">
 			<?=form_label('Phone Number','phone')?>
@@ -69,7 +70,7 @@
 	
 	<div id="submit_wrapper"><a class="large green button" id="submit">Submit</a></div>
 	
-	<input type="submit" style="visibility:hidden; display:none; height:0;" /><!--  For better browser compatibility  -->
+	<div style="height:0; overflow:hidden"><input type="submit" /></div>
 	
 <?=form_close()?>
 
@@ -110,3 +111,4 @@ $(document).ready(function(){
 });
 	
 </script>
+<?=$this->load->view('footer')?>
