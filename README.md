@@ -46,7 +46,7 @@ You'll need to setup a new Facebook app.  This assumes you are already an admini
 - Click "Facebook Integration" on the left and scroll down to "Page Tabs."
 - Fill in Tab Name (e.g. Open311) and  Tab URL.  The URL will be [base directory]/facebook.  Click Save Changes.
 - You will be brought to your app's developer page.  You will need to copy the values under "App ID," "API Key," and "App Secret" into config/constants.php where it says `FACEBOOK_APP_ID`, `FACEBOOK_APP_KEY`, and `FACEBOOK_APP_SECRET`, respectively.
-- Go to http://www.facebook.com/apps/application.php?id=`App ID` and click "Add to My Page" on the bottom left, and then select your city's page.
+- Go to http://www.facebook.com/apps/application.php?id= `App ID` and click "Add to My Page" on the bottom left, and then select your city's page.
 - Go to your city's page, and you should see your Open311 app on the left sidebar.  At this point, your app should be fully functional.
 - **Optional:** Set this tab as the default view for your page by click "Edit Info" beneath your page's name, clicking "Manage Permissions" on the left sidebar, and then selecting your Open311 app in the "Default Landing Tab" dropdown.  Note: due to a bug in Facebook, you will still see the Wall by default, but other users to your page will see Open311 by default.  You can test this by logging out of Facebook and going to your page.
 - **Tip:** Once your page has 25 "fans," you can get a custom URL by going to "Edit Info" > "Basic Information" and selecting a Username.  This will allow users to access your app at a URL like http://facebook.com/SF311.
