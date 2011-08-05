@@ -15,7 +15,7 @@ define('STATE_ABBR', 				'CA');
 define('CONTACT_DISCLAIMER', 		'This contact info lets departments contact you for more information. Your email also allows you to track your service request.');
 define('PROJECT_NAME', 				'Open311');
 define('PROJECT_DESCRIPTION', 		'Report a problem in your neighborhood');
-define('SUCCESS_MESSAGE', 			''); // Optional text after "Your request ID is…"
+define('SUCCESS_MESSAGE', 			''); // e.g. "You will receive an e-mail from us with more information if you provided an e-mail address."
 
 
 /*
