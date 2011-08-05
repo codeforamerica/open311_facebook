@@ -8,7 +8,7 @@ Application Configuration
 - Upload these files to your server.
 - If you don't see a file called .htaccess, rename htaccess-visible to .htaccess on your server.
 - Rename config/constants-template.php to constants.php, and open it.
-- Change `CITY_LAT`, `CITY_LONG`, `CITY_NAME`, and `STATE_ABBR` to the appropriate values.  Find your city's coordinates at [TravelMath](http://www.travelmath.com) (use decimal form, not degrees)
+- Change `CITY_LAT`, `CITY_LONG`, `CITY_NAME`, and `STATE_ABBR` to the appropriate values.  Find your city's coordinates at [TravelMath](http://www.travelmath.com/city) (use decimal form, not degrees)
 - **Optional:** change `PROJECT_NAME`, `PROJECT_DESCRIPTION`, `CONTACT_DISCLAIMER`, and `SUCCESS_MESSAGE` to whatever fits your needs.
 - Keep this file open as you will need to change several settings throughout the installation process.
 
@@ -20,7 +20,7 @@ Privacy Policy
 
 Amazon S3 Configuration
 ----------------------
-You'll need an Amazon AWS account to store user images on Amazon S3.  If you don't have an AWS account yet, go to [here](http://aws.amazon.com/s3/) and click Sign Up Now.
+You'll need an Amazon AWS account to store user images on Amazon S3.  If you don't have an AWS account yet, go [here](http://aws.amazon.com/s3/) and click Sign Up Now.
 
 Note: Amazon S3 charges minimal [fees](http://aws.amazon.com/s3/pricing/) based on your usage.  It is unlikely that you will go over a few bucks a month.
 
