@@ -57,7 +57,7 @@ You can access your new Open311 app outside of Facebook.  Simply navigate to the
 
 Development
 ===========
-This app was originally designed and developed by Stanford Rosenthal for Code for America with guidance from The City of San Francisco and The City of Boston.  
+This app was originally designed and developed by Stanford Rosenthal for Code for America as an adaptation of [Henry Jiang's SF311 app](https://github.com/SFgov/SF311-Facebook) that was built on V1 of the Open311 spec.  Development and deployment of the is made possible thanks to the City and County of San Francisco.
 
 Language: PHP (tested on PHP5)
 
