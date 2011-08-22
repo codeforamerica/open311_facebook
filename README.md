@@ -72,6 +72,7 @@ Libraries
 - [Facebook Javascript SDK by Facebook](http://developers.facebook.com/docs/reference/javascript)
 - [jQuery](http://jquery.com)
 - [Google Maps Javascript API v3](http://code.google.com/apis/maps/documentation/javascript/)
+- [Stan's Template](http://github.com/nolastan/stans-template)
 
 Testing
 ------
