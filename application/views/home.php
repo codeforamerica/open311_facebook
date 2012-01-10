@@ -101,7 +101,7 @@ function autofill(){
 	  		if(response.mobile_phone){$('#phone input').val(response.mobile_phone);}
 	  		$('#connect').fadeOut();
 		});
-	}, {perms:'email'});
+	}, {scope:'email'});
 }
 
 $(document).ready(function(){
